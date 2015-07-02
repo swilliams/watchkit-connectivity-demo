@@ -21,5 +21,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func setImage(image: UIImage) {
+        dispatch_async(dispatch_get_main_queue()) { [weak self] in
+            self?.mainImageView.image = image
+        }
+    }
 }
 

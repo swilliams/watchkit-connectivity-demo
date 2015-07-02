@@ -35,6 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     func session(session: WCSession, didReceiveFile file: WCSessionFile) {
         print("Received File with URL: \(file.fileURL)")
+        if let data = NSData(contentsOfURL: file.fileURL) {
+            if let img = UIImage(data: data) {
+                let vc = window?.rootViewController as! ViewController
+                vc.setImage(img)
+            }
+        }
     }
 
     func sessionReachabilityDidChange(session: WCSession) {
